@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-7
+Test Files: tasks/task-7/task_tests.py
+FAIL_TO_PASS: ['test_velocity_alert', 'test_velocity_alert_variant', 'test_not_default', 'test_case_insensitive', 'test_velocity_alone_returns_default', 'test_unrelated_returns_default']
+PASS_TO_PASS: []

@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-8
+Test Files: tasks/task-8/task_tests.py
+FAIL_TO_PASS: ['test_travel_abroad', 'test_travel_keyword', 'test_abroad_keyword', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']
+PASS_TO_PASS: []

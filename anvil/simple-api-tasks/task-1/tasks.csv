@@ -1,0 +1,24 @@
+repo,instance_id,base_commit,patch,test_patch,problem_statement,requirements,interface,repo_language,fail_to_pass,pass_to_pass,issue_specificity,issue_categories,before_repo_set_cmd,selected_test_files_to_run
+afterquery/simple-api,simple-api.task-1,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..6ccbbaf 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""what is fraud detection"" question
+
+Add a response in get_response() for when user asks what fraud detection is.
+
+Requirements:
+1. If message contains ""what is fraud detection"" or ""how does fraud detection work"" (case-insensitive), return an explanation
+2. The response must mention ""patterns"" or ""rules""
+3. All other messages still return the default response
+4. Return 400 if message is empty or missing",,,Python,"['test_fraud_detection_keyword', 'test_fraud_detection_how', 'test_case_insensitive', 'test_not_default', 'test_unrelated_returns_default', 'test_partial_no_trigger']",[],,,,['tasks/task-1/task_tests.py']

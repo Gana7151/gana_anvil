@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-3
+Test Files: tasks/task-3/task_tests.py
+FAIL_TO_PASS: ['test_another_country', 'test_different_country', 'test_foreign_transaction', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']
+PASS_TO_PASS: []

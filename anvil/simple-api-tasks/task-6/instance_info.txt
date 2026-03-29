@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-6
+Test Files: tasks/task-6/task_tests.py
+FAIL_TO_PASS: ['test_report_transaction', 'test_report_transaction_variant', 'test_not_default', 'test_case_insensitive', 'test_report_without_transaction_returns_default', 'test_unrelated_returns_default']
+PASS_TO_PASS: []

@@ -1,0 +1,16 @@
+ï»¿diff --git a/app.py b/app.py
+index dda54e4..b550aa8 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if "what is fraud detection" in msg or "how does fraud detection work" in msg:
++        return "Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud."
++    if "high risk alert" in msg or "high_risk alert" in msg:
++        return "A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support."
+     return "Sorry, I don't have an answer for that right now."
+ @app.route("/chat", methods=["POST"])
+ def chat():

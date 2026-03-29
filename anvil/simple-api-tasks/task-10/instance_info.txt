@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-10
+Test Files: tasks/task-10/task_tests.py
+FAIL_TO_PASS: ['test_how_accurate', 'test_accuracy_keyword', 'test_fraud_detection_model', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']
+PASS_TO_PASS: []

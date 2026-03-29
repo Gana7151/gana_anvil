@@ -1,0 +1,27 @@
+repo,instance_id,base_commit,patch,test_patch,problem_statement,requirements,interface,repo_language,fail_to_pass,pass_to_pass,issue_specificity,issue_categories,before_repo_set_cmd,selected_test_files_to_run
+afterquery/simple-api,simple-api.task-3,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..a8683e7 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,13 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""foreign transaction"" question
+
+Add a response in get_response() for when user asks about transactions from another country.
+
+Requirements:
+1. If message contains ""another country"", ""different country"", or ""foreign transaction"" (case-insensitive), return a response
+2. The response must mention ""geo"" or ""flag""
+3. All other messages still return the default response",,,Python,"['test_another_country', 'test_different_country', 'test_foreign_transaction', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']",[],,,,['tasks/task-3/task_tests.py']

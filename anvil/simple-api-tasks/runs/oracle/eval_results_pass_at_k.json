@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "model": "oracle",
+    "dataset": "simple-api-tasks",
+    "agent": "oracle",
+    "k": 1,
+    "n_tasks": 10,
+    "total_runs": 10,
+    "duration_seconds": 6.829528093338013
+  },
+  "aggregate": {
+    "pass_at_1": 0.0
+  },
+  "per_instance": {
+    "simple-api.task-1": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-10": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-2": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-3": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-4": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-5": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-6": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-7": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-8": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    },
+    "simple-api.task-9": {
+      "attempts": 1,
+      "successes": 0,
+      "pass_at_1": 0.0,
+      "solved": false
+    }
+  }
+}

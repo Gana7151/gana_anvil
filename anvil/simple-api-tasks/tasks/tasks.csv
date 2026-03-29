@@ -1,0 +1,313 @@
+repo,instance_id,base_commit,patch,test_patch,problem_statement,requirements,interface,repo_language,fail_to_pass,pass_to_pass,issue_specificity,issue_categories,before_repo_set_cmd,selected_test_files_to_run
+afterquery/simple-api,simple-api.task-1,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..6ccbbaf 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""what is fraud detection"" question
+
+Add a response in get_response() for when user asks what fraud detection is.
+
+Requirements:
+1. If message contains ""what is fraud detection"" or ""how does fraud detection work"" (case-insensitive), return an explanation
+2. The response must mention ""patterns"" or ""rules""
+3. All other messages still return the default response
+4. Return 400 if message is empty or missing",,,Python,"['test_fraud_detection_keyword', 'test_fraud_detection_how', 'test_case_insensitive', 'test_not_default', 'test_unrelated_returns_default', 'test_partial_no_trigger']",[],,,,['tasks/task-1/task_tests.py']
+afterquery/simple-api,simple-api.task-10,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..ed055df 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,27 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
++    if ""report"" in msg and ""transaction"" in msg:
++        return ""To report a suspicious transaction, contact support with your transaction ID and the date it occurred.""
++    if ""velocity alert"" in msg:
++        return ""A velocity alert fires when too many transactions happen in a short time window.""
++    if ""travel"" in msg or ""abroad"" in msg:
++        return ""Travelling can trigger geo-anomaly alerts. It helps to notify your bank before you leave.""
++    if ""blocked"" in msg or ""transaction blocked"" in msg:
++        return ""Blocked transactions are sent to the fraud review team who take a closer look.""
++    if ""how accurate"" in msg or ""accuracy"" in msg or ""fraud detection model"" in msg:
++        return ""The model is trained on a lot of historical transaction data and is built for high precision.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""how accurate is the model"" question
+
+Add a response in get_response() for when user asks about the accuracy of the fraud detection model.
+
+Requirements:
+1. If message contains ""how accurate"", ""accuracy"", or ""fraud detection model"" (case-insensitive), return a response
+2. The response must mention ""train"" or ""precision""
+3. All other messages still return the default response",,,Python,"['test_how_accurate', 'test_accuracy_keyword', 'test_fraud_detection_model', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']",[],,,,['tasks/task-10/task_tests.py']
+afterquery/simple-api,simple-api.task-2,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..b550aa8 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""high risk alert"" question
+
+Add a response in get_response() for when user asks about a high risk alert.
+
+Requirements:
+1. If message contains ""high risk alert"" or ""high_risk alert"" (case-insensitive), return a response
+2. The response must mention ""verify"" or ""support""
+3. All other messages still return the default response
+4. Return 400 if message is empty or missing",,,Python,"['test_high_risk_alert', 'test_high_risk_underscore', 'test_case_insensitive', 'test_not_default', 'test_unrelated_returns_default', 'test_partial_no_trigger']",[],,,,['tasks/task-2/task_tests.py']
+afterquery/simple-api,simple-api.task-3,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..a8683e7 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,13 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""foreign transaction"" question
+
+Add a response in get_response() for when user asks about transactions from another country.
+
+Requirements:
+1. If message contains ""another country"", ""different country"", or ""foreign transaction"" (case-insensitive), return a response
+2. The response must mention ""geo"" or ""flag""
+3. All other messages still return the default response",,,Python,"['test_another_country', 'test_different_country', 'test_foreign_transaction', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']",[],,,,['tasks/task-3/task_tests.py']
+afterquery/simple-api,simple-api.task-4,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..05e13e8 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,15 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""risk score"" question
+
+Add a response in get_response() for when user asks about a high risk score.
+
+Requirements:
+1. If message contains ""risk score"" AND either ""0.9"" or ""high"" (case-insensitive), return a response
+2. The response must mention ""block"" or ""critical""
+3. All other messages still return the default response",,,Python,"['test_risk_score_09', 'test_risk_score_high', 'test_not_default', 'test_case_insensitive', 'test_risk_score_alone_returns_default', 'test_unrelated_returns_default']",[],,,,['tasks/task-4/task_tests.py']
+afterquery/simple-api,simple-api.task-5,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..939f17f 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,17 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""multiple rapid transactions"" question
+
+Add a response in get_response() for when user reports card used multiple times rapidly.
+
+Requirements:
+1. If message contains ""10 times"" or ""multiple times"" (case-insensitive), return a response
+2. The response must mention ""velocity"" or ""rapid""
+3. All other messages still return the default response",,,Python,"['test_10_times', 'test_multiple_times', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default', 'test_single_transaction_returns_default']",[],,,,['tasks/task-5/task_tests.py']
+afterquery/simple-api,simple-api.task-6,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..444e990 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,19 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
++    if ""report"" in msg and ""transaction"" in msg:
++        return ""To report a suspicious transaction, contact support with your transaction ID and the date it occurred.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""report a transaction"" question
+
+Add a response in get_response() for when user wants to report a suspicious transaction.
+
+Requirements:
+1. If message contains both ""report"" and ""transaction"" (case-insensitive), return a response
+2. The response must mention ""support"" or ""contact""
+3. All other messages still return the default response",,,Python,"['test_report_transaction', 'test_report_transaction_variant', 'test_not_default', 'test_case_insensitive', 'test_report_without_transaction_returns_default', 'test_unrelated_returns_default']",[],,,,['tasks/task-6/task_tests.py']
+afterquery/simple-api,simple-api.task-7,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..4673dc9 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,21 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
++    if ""report"" in msg and ""transaction"" in msg:
++        return ""To report a suspicious transaction, contact support with your transaction ID and the date it occurred.""
++    if ""velocity alert"" in msg:
++        return ""A velocity alert fires when too many transactions happen in a short time window.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""velocity alert"" question
+
+Add a response in get_response() for when user asks what a velocity alert is.
+
+Requirements:
+1. If message contains ""velocity alert"" (case-insensitive), return a response
+2. The response must mention ""time"" or ""transactions""
+3. All other messages still return the default response",,,Python,"['test_velocity_alert', 'test_velocity_alert_variant', 'test_not_default', 'test_case_insensitive', 'test_velocity_alone_returns_default', 'test_unrelated_returns_default']",[],,,,['tasks/task-7/task_tests.py']
+afterquery/simple-api,simple-api.task-8,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..02dca9b 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,23 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
++    if ""report"" in msg and ""transaction"" in msg:
++        return ""To report a suspicious transaction, contact support with your transaction ID and the date it occurred.""
++    if ""velocity alert"" in msg:
++        return ""A velocity alert fires when too many transactions happen in a short time window.""
++    if ""travel"" in msg or ""abroad"" in msg:
++        return ""Travelling can trigger geo-anomaly alerts. It helps to notify your bank before you leave.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""travel abroad"" question
+
+Add a response in get_response() for when user asks about travelling and fraud alerts.
+
+Requirements:
+1. If message contains ""travel"" or ""abroad"" (case-insensitive), return a response
+2. The response must mention ""geo"" or ""bank"" or ""notify""
+3. All other messages still return the default response",,,Python,"['test_travel_abroad', 'test_travel_keyword', 'test_abroad_keyword', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default']",[],,,,['tasks/task-8/task_tests.py']
+afterquery/simple-api,simple-api.task-9,f1984d5bacc42fea79336e79ba157ef6678eb77b,"﻿diff --git a/app.py b/app.py
+index dda54e4..e93dc79 100644
+--- a/app.py
++++ b/app.py
+@@ -2,6 +2,25 @@ from flask import Flask, jsonify, request
+ app = Flask(__name__)
+ chat_history = []
+ def get_response(message):
++    msg = message.lower()
++    if ""what is fraud detection"" in msg or ""how does fraud detection work"" in msg:
++        return ""Fraud detection is a system that looks for suspicious activity using patterns and rules to catch potential fraud.""
++    if ""high risk alert"" in msg or ""high_risk alert"" in msg:
++        return ""A HIGH_RISK alert means something looks off with your transaction. Please verify your identity and reach out to support.""
++    if ""another country"" in msg or ""different country"" in msg or ""foreign transaction"" in msg:
++        return ""Transactions from another country can trigger a geo-anomaly flag in the system.""
++    if ""risk score"" in msg and (""0.9"" in msg or ""high"" in msg):
++        return ""A score of 0.9 is critical. Anything above 0.85 means the transaction might get blocked automatically.""
++    if ""10 times"" in msg or ""multiple times"" in msg:
++        return ""That sounds like a velocity alert. Rapid transactions in a short window get flagged as suspicious.""
++    if ""report"" in msg and ""transaction"" in msg:
++        return ""To report a suspicious transaction, contact support with your transaction ID and the date it occurred.""
++    if ""velocity alert"" in msg:
++        return ""A velocity alert fires when too many transactions happen in a short time window.""
++    if ""travel"" in msg or ""abroad"" in msg:
++        return ""Travelling can trigger geo-anomaly alerts. It helps to notify your bank before you leave.""
++    if ""blocked"" in msg or ""transaction blocked"" in msg:
++        return ""Blocked transactions are sent to the fraud review team who take a closer look.""
+     return ""Sorry, I don't have an answer for that right now.""
+ @app.route(""/chat"", methods=[""POST""])
+ def chat():
+",,"Task: Handle ""blocked transaction"" question
+
+Add a response in get_response() for when user asks what happens after a transaction is blocked.
+
+Requirements:
+1. If message contains ""blocked"" or ""transaction blocked"" (case-insensitive), return a response
+2. The response must mention ""review"" or ""team""
+3. All other messages still return the default response",,,Python,"['test_blocked', 'test_transaction_blocked', 'test_not_default', 'test_case_insensitive', 'test_unrelated_returns_default', 'test_block_partial_returns_default']",[],,,,['tasks/task-9/task_tests.py']

@@ -1,0 +1,4 @@
+Instance ID: simple-api.task-1
+Test Files: tasks/task-1/task_tests.py
+FAIL_TO_PASS: ['test_fraud_detection_keyword', 'test_fraud_detection_how', 'test_case_insensitive', 'test_not_default', 'test_unrelated_returns_default', 'test_partial_no_trigger']
+PASS_TO_PASS: []
